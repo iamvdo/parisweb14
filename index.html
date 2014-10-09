@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Les masques CSS, vers de nouveaux usages dans le webdesign</title>
+
+		<meta name="description" content="Conférence Paris-Web 2014.">
+		<meta name="author" content="Vincent De Oliveira">
+		<link rel="icon" href="http://iamvdo.me/images/favicon.png"/>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="vdo/theme_vdo.css" id="theme">
+		<link rel="stylesheet" href="plugin/nav/nav.css">
+
+		<!-- Add VDO stylesheet -->
+		<!-- <link rel="stylesheet" href="vdo/assets/vdo.css"> -->
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Les masques CSS</h1>
+					<h2>Vers de nouveaux usages dans le webdesign</h2>
+					<p class="u-aligncenter u-small u-margin">
+						Vincent De Oliveira &middot; <a href="http://twitter.com/iamvdo">@iamvdo</a>
+					</p>
+				</section>
+
+				<section class="me">
+					<h2>Vincent De Oliveira</h2>
+					<ul class="vcard fragment">
+						<li>Formateur CSS & UI <a href="http://www.ensg.eu" title="Ecole Nationale des Sciences Géographiques">ENSG Géomatique</a></li>
+						<li><a href="http://twitter.com/iamvdo">@iamvdo</a></li>
+						<li><a href="http://css3create.com">css3create.com</a>, <a href="http://iamvdo.me">iamvdo.me</a>, <a href="http://pleeease.io">pleeease.io</a></li>
+						<li>Livre <a href="http://livre-css3.fr">CSS3 Le design web moderne</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="u-alignmiddle">Qui a déjà utilisé les masques CSS?</h2>
+				</section>
+
+				<section>
+					<h2 class="u-alignmiddle u-code"><code>border-radius</code></h2>
+				</section>
+
+				<section>
+					<article class="demo">
+						<style>
+						#ex1 img {
+						  border-radius: 50%;
+						  box-shadow: 0 3px 3px rgba(0,0,0,.5);
+						  border: 7px solid #111;
+              transition: border-top-left-radius .2s 0s,
+                          border-bottom-right-radius .2s 0,
+                          border-top-right-radius .2s .2s,
+                          border-bottom-left-radius .2s .2s;
+						}
+            #ex1 img:hover {
+              border-radius: 0;
+            }
+            /*
+						#ex1 img.over {
+						  animation: br .4s 1 both cubic-bezier(.2,.1,.1,1);
+						}
+						#ex1 img.out {
+						  animation: br2 .4s 1 both cubic-bezier(.2,.1,.1,1);
+						}
+						@keyframes br {
+							from {border-radius: 50%;}
+							50%  {border-radius: 50% 0 50% 0;}
+							to   {border-radius: 0;}
+						}
+						@keyframes br2 {
+							to   {border-radius: 50%;}
+							50%  {border-radius: 0 50% 0 50%;}
+							from {border-radius: 0;}
+						}
+            */
+						</style>
+						<div>
+							<div id="ex1">
+								<img src="vdo/imgs/6.jpg" alt="">
+							</div>
+							<script>
+              /*
+							var img = document.querySelector('#ex1 img');
+							img.addEventListener('mouseover', function (e) {
+							  this.className = 'over';
+							});
+							img.addEventListener('mouseout', function (e) {
+							  this.className = 'out';
+                var i = img;
+							  setTimeout(function () {
+							    i.className = '';
+							  }, 500);
+							});
+*/
+							</script>
+						</div>
+						<div class="fragment u-margin">
+<pre><code class="liveCoding css" data-livecoding-id="ex1" contenteditable spellcheck="false">img {
+  border-radius: 50%;
+}</code></pre>
+						</div>
+					</article>
+				</section>
+
+				<section>
+					<h2 class="u-alignmiddle">Qui a déjà utilisé les masques CSS?</h2>
+				</section>
+
+				<section>
+					<h2 class="u-alignmiddle u-code"><code>overflow: hidden</code></h2>
+				</section>
+
+				<section>
+					<article class="demo">
+            <style>
+            #ex2 {
+              height: 200px;
+            }
+            #ex2 .wrap {
+              width: 200px; height: 200px;
+              margin: 50px;
+              overflow: hidden;
+              box-shadow: 0 3px 3px rgba(0,0,0,.5);
+              border: 7px solid #111;
+            }
+            #ex2 .wrap,
+            #ex2 .wrap-img {
+              position: absolute;
+              left: 0; right: 0; margin: auto;
+              transition: transform .5s, box-shadow .5s, border-radius .5s;
+              transition-timing-function: cubic-bezier(.2,.1,.1,1);
+            }
+            #ex2 .wrap-img {
+              margin-left: -100px;
+              margin-top: -100px;
+              max-width: inherit;
+              max-height: inherit;
+            }
+            #ex2 .wrap:hover {
+              box-shadow: 3px 3px 3px rgba(0,0,0,.5);
+              transform: rotate(45deg);
+            }
+            #ex2 .wrap:hover .wrap-img {
+              transform: rotate(-45deg);
+            }
+            #ex2.click .wrap,
+            #ex2.click .wrap:hover {
+              transform: rotate(45deg) scale(1.4);
+            }
+            #ex2.click .wrap-img,
+            #ex2.click .wrap:hover .wrap-img {
+              transform: scale(.714) rotate(-45deg);
+            }
+            </style>
+            <div>
+              <div id="ex2">
+                <div class="wrap">
+                  <img class="wrap-img u-no" src="vdo/imgs/3-400.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="fragment u-margin">
+<pre><code class="liveCoding css" data-livecoding-id="ex2" contenteditable spellcheck="false">.wrap {
+  overflow: hidden;
+}
+.wrap:hover {
+  transform: rotate(45deg);
+}
+.wrap:hover .wrap-img {
+  transform: rotate(-45deg);
+}
+</code></pre>
+            </div>
+            <script>
+              var img = document.querySelector('#ex2');
+              img.addEventListener('click', function (e) {
+                this.classList.toggle('click');
+              });
+            </script>
+          </article>
+				</section>
+
+        <section>
+          <article class="demo">
+            <style>
+            #ex3 {
+              height: 200px;
+            }
+            #ex3 .wrap {
+              width: 200px; height: 200px;
+              margin: 50px;
+              overflow: hidden;
+              position: absolute;
+              left: 0; right: 0; margin: auto;
+            }
+            #ex3 .wrap-inner {
+              width: 200px;
+              height: 200px;
+              overflow: hidden;
+            }
+            #ex3 .wrap,
+            #ex3 .wrap-inner,
+            #ex3 .wrap-img {
+              transition: transform .5s, box-shadow .5s, border-radius .5s;
+              transition-timing-function: cubic-bezier(.2,.1,.1,1);
+            }
+            #ex3 .wrap-img {
+              margin-left: -50px;
+              margin-top: -50px;
+              max-width: inherit;
+              max-height: inherit;
+            }
+            #ex3 .wrap:hover {
+              transform: rotate(45deg);
+            }
+            #ex3 .wrap:hover .wrap-inner {
+              transform: rotate(45deg);
+            }
+            #ex3 .wrap:hover .wrap-img {
+              transform: rotate(-90deg);
+            }
+            </style>
+            <div>
+              <div id="ex3">
+                <div class="wrap">
+                  <div class="wrap-inner">
+                    <img class="wrap-img u-no" src="vdo/imgs/9-300.jpg" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fragment u-margin">
+<pre><code class="liveCoding css" data-livecoding-id="ex3" contenteditable spellcheck="false">.wrap,
+.wrap-inner {
+  overflow: hidden;
+}
+.wrap:hover {
+  transform: rotate(45deg);
+}
+.wrap:hover .wrap-inner {
+  transform: rotate(45deg);
+}
+.wrap:hover .wrap-img {
+  transform: rotate(-90deg);
+}
+</code></pre>
+            </div>
+          </article>
+        </section>
+
+				<section>
+					<h2 class="">OK, le mec se fout de nous!</h2>
+          <p class="fragment u-aligncenter u-margin">Pas tant que ça en fait...</p>
+				</section>
+
+        <section>
+          <article class="demo">
+            <style>
+            #ex4 {
+              width: 320px;
+              height: 480px;
+              margin: auto;
+              background: #555;
+              box-shadow: 0 2px 2px rgba(0,0,0,.8);
+              border: 1px solid black;
+            }
+            #ex4 h1 {
+                font-family: 'montserrat', sans-serif;
+                letter-spacing: -2px;
+                position: absolute;
+                left: 0px;
+                z-index: 10;
+                font-size: 26px;
+                line-height: 28px;
+                margin: 0;
+                padding: 15px;
+                color: #fff;
+                background: none;
+            }
+            #ex4 #root {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background-color: #222;
+            }
+            #ex4 .masking-1,
+            #ex4 .masking-2,
+            #ex4 .content {
+              pointer-events: none;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              overflow: hidden;
+              transition: transform .4s cubic-bezier(.6,0,.3,1), z-index 0s .4s;
+            }
+            #ex4 .masking-1 {
+              transform: translateY(-300px);
+              border-bottom: 2px solid orangered;
+            }
+            #ex4 .masking-2 {
+              transform: translateY(380px);
+            }
+            #ex4 .content {
+              pointer-events: auto;
+              transform: translateY(-200px);
+            }
+            #ex4 .masking-1:nth-of-type(2) {
+              transform: translateY(-195px);
+            }
+            #ex4 .masking-1:nth-of-type(2) .content {
+              transform: translateY(-130px);
+            }
+            #ex4 .masking-1:nth-of-type(3) {
+              transform: translateY(-90px);
+            }
+            #ex4 .masking-1:nth-of-type(3) .content {
+              transform: translateY(-220px);
+            }
+            #ex4 .masking-1.open,
+            #ex4 .masking-1.open .masking-2,
+            #ex4 .masking-1.open .content {
+              transform: translateY(0);
+            }
+            #ex4 .masking-1.open {
+              z-index: 1;
+              transition: transform .4s cubic-bezier(.6,0,.3,1), z-index 0s;
+            }
+            </style>
+            <div>
+              <div id="ex4">
+                <div id="root">
+                  <h1>Café Club</h1>
+                  <div class="masking-1">
+                    <div class="masking-2">
+                      <div class="content">
+                        <img class="u-no" src="vdo/imgs/cafe1-320x480.jpg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="masking-1">
+                    <div class="masking-2">
+                      <div class="content">
+                        <img class="u-no" src="vdo/imgs/cafe2-320x480.jpg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="masking-1">
+                    <div class="masking-2">
+                      <div class="content">
+                        <img class="u-no" src="vdo/imgs/cafe3-320x480.jpg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+              var masks = document.querySelectorAll('#ex4 .content');
+              var fnClick = function (e) {
+                var m = e.target.parentNode.parentNode.parentNode;
+                m.classList.toggle('open');
+              };
+
+              for (var i = 0; i < masks.length; i++) {
+                masks[i].addEventListener('click', fnClick);
+              }
+            </script>
+          </article>
+        </section>
+
+        <section>
+          <article class="demo">
+            <style>
+            #ex5 {
+              width: 320px;
+              height: 480px;
+              margin: auto;
+              perspective: 500px;
+            }
+            #ex5 #root {
+              width: 100%;
+              height: 100%;
+              position: relative;
+              background-color: #222;
+              transform: rotateY(-45deg) scale(.7);
+              transform-style: preserve-3d;
+            }
+            #ex5 .root-item {
+              position: absolute;
+              top: 0; bottom: 0; right: 0; left: 0;
+              transform: translateZ(100px);
+              transition: transform .4s cubic-bezier(.6,0,.3,1);
+            }
+            #ex5 .masking-1 {
+              transform: translateZ(50px);
+              background: rgba(255,0,0,.5);
+              animation: mask1 3s infinite alternate;
+              z-index: 2;
+            }
+            #ex5 .masking-2 {
+              transform: translateZ(25px);
+              background: rgba(0,255,0,.5);
+              animation: mask2 3s infinite alternate;
+              z-index: 1;
+            }
+            #ex5 .content {
+              transform: translateZ(0);
+              z-index: 0;
+            }
+            @keyframes mask1 {
+              from, 70% {
+                transform: translateZ(50px) translateY(-200px); 
+              }
+              to {
+                transform: translateZ(50px) translateY(0);
+              }
+            }
+            @keyframes mask2 {
+              from, 70% {
+                transform: translateZ(25px) translateY(200px); 
+              }
+              to {
+                transform: translateZ(25px) translateY(0);
+              }
+            </style>
+            <div>
+              <div id="ex5">
+                <div id="root">
+                  <div class="root-item masking-1"></div>
+                  <div class="root-item masking-2"></div>
+                  <div class="root-item content">
+                    <img class="u-no" src="vdo/imgs/cafe2-320x480.jpg" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section>
+          <h2>Quand même un peu</h2>
+          <ul>
+            <li class="fragment">Imbrication complexe</li>
+            <li class="fragment">Transformation inverse impossible</li>
+          </ul>
+        </section>
+
+
+			</div>
+
+		</div>
+
+		<div class="reveal-overlay"></div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: false,
+				history: true,
+				center: false,
+
+				transitionSpeed: 'slow',
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				//parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/prefixfree/prefixfree.js', async: true },
+					{ src: 'plugin/live-coding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }},
+					{ src: 'plugin/nav/nav.js', async: true}
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

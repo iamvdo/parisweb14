@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  html {
+    background: #333;
+  }
+.e {
+  stroke: #000;
+  stroke-width: 4px;
+  fill: none;
+}
+.e + .e {
+  stroke: white;
+}
+svg {
+  display: block;
+  margin: 100px auto;
+}
+/*
+.e path {
+  animation-fill-mode: both;
+}
+
+
+.e .P1 {
+  animation-delay: 0s;
+  animation-duration: .6s;
+}
+.e .P2 {
+  animation-delay: .5s;
+  animation-duration: .6s;
+}
+
+
+.e .aris path:nth-child(1) {
+  animation-duration: .4s;
+  animation-delay: 1s;
+}
+.e .aris path:nth-child(2) {
+  animation-duration: .9s;
+  animation-delay: 1.3s;
+}
+.e .aris path:nth-child(3) {
+  animation-duration: .2s;
+  animation-delay: 2.1s;
+}
+.e .aris path:nth-child(4) {
+  animation-duration: .4s;
+  animation-delay: 2.2s;
+}
+
+
+.e .point {
+  animation-duration: .2s;
+  animation-delay: 2.5s;
+}
+
+
+.e .web path:nth-child(1) {
+  animation-duration: 2.2s;
+  animation-delay: 2.6s;
+}
+.e .web path:nth-child(2) {
+  animation-duration: .5s;
+  animation-delay: 4.4s;
+}
+.e .web path:nth-child(3) {
+  animation-duration: .5s;
+  animation-delay: 4.8s;
+}
+*/
+
+
+
+
+
+
+
+
+@keyframes animstroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes hello {
+  to {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <svg width="600" height="600" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <mask id="masque1" fill="white">
+      <path d="M16.4,49.1c0,0,0.2,17.7-0.8,24c-1,6.4-3.7,17.2-6.9,17.2S4.9,84.5,5,83.5c0.1-0.9-0.2-6.6,2.9-6.7
+      c3.1-0.1,2.7,2.2,2.8,2.5c0.1,0.3,0,1.3-1.7,2.8c2-0.7,2.9-2,2.8-3.5c-0.1-1.5-0.9-3.5-2.9-3.3c-2,0.2-5.6,2.6-5.4,8.2
+      c0.2,5.6,3,7.9,4.7,7.9c1.7,0,6.9-2.8,8.8-18.7c1-8.9,0.7-24.4,0.7-24.4L16.4,49.1z"></path>
+    </mask>
+    
+    <mask id="masque2" fill="white">
+      <path class="st4" d="M13.7,62.5c0,0-0.6,5.2-3.6,5.1c-3.1-0.1-3.1-3.6-2.5-6.6c0.7-3.1,5-12.7,12.3-14.1c4.9-0.9,5.1,10.3,5.1,10.3
+      s0.1,18.4-16.3,17c0.1-0.7,0.7-1.5,0.7-1.5s2.9,0.7,5,0.1c2.1-0.7,8.8-3.8,9.3-13.3c0.6-11.2-2.9-12-4.1-11.7
+      c-1.2,0.4-7.9,3.1-10.2,14.3c-1,4.7,1,4.1,1.2,4c0.3-0.1,1.4,0.1,2-3.3C13.1,62.8,13.7,62.5,13.7,62.5z"/>
+    </mask>
+    
+    <mask id="masque3" fill="white">
+      <path class="st5" d="M58,39.8c-1.2-0.7-1.5,1.1-1.4,1.8c0.1,0.7-1,1.5-1,1.5s-2.6-3.1-4.7-3.8c-0.6,0.4-1.2,1-1.2,1
+    s2.8,8.4-1.1,12.3c-0.6-0.9-1.7-0.9-1.2-10.6c-0.7,0.6-1.6,1.3-1.6,1.3s0.7,5.6-0.6,8.5c-1.2,2.9-2.6,4.6-3.1,4s0-8.2,0.4-10.5
+    c-1.7,1.2-5.1,3.5-5.1,3.5s-0.5-1-1.4-0.1c-0.9,0.9-2.2,1.7-1.5,2.4c0.7,0.7,1.8-0.1,1.8-0.1s1.3,7-1.7,10.3
+    c-0.7-0.8-1.5-2.7-1.6-9.9c-0.5,0.2-1.2,0.6-1.2,0.6s0.7,7.8-0.9,10c-1.6,2.2-3.5,3.5-3.3,0c0.2-3.5,1.3-8,3-8.4
+    c0.7-0.2,0.7,0.7,0.7,0.7l0.1-0.8l0.1-1.1c0,0-5,1-5.2,9.2c-0.2,8.2,5,2.1,6-0.4c0.3,0.9,0.9,2.4,2.1,2c1.1-0.5,4.2-2.9,3.6-12.9
+    c1.3-1.1,3.3-2.5,3.3-2.5s-1,9.2,0,9.5c0.9,0.3,3.5-0.9,5.3-5.8c0.3,1.8,0.7,3,1.9,2.8c0.8-0.1,2.5-1.9,3.3-5.4
+    c-0.1,0.6,0,1.1,0.4,1.5c1.6,1.7,6.3-2.8,4.4-6.5C57.4,42.6,59.2,40.5,58,39.8z M51.6,48.3c0.3-1.8,0.4-3.9,0.1-6.4
+    c1.1,0.6,2.3,1.5,2.5,2.2C53.6,44.8,52.1,46.7,51.6,48.3z M53,48.8c-1.3-1.4,2-3.6,2-3.6C56.3,47.1,54.3,50.2,53,48.8z"/>
+    </mask>
+    
+    <mask id="masque4"  fill="white">
+      <path class="st0" d="M89,8.8c-5.5-0.1-15.5,10.5-17.8,12.7c-1-1.6-2.5-0.7-3.3-0.4c-0.7,0.4-1.3,1.5-0.7,2.3s1.9,1.5,2.9,0.6
+    c5.1,6.7,1.3,14.2,0.7,15.2c-0.7,1-0.7,1.8-2.3,0.5c1.7-8.1-1.5-13.2-1.5-13.2s-0.8,0.8-1.7,1.8c-0.1,3.2,0.4,8.5,1.7,11.7
+    c-1.6,5.2-2.6,4.7-4.2,2.7c-2.6-3.3-2.1-11-1.9-14c4.9-2.8,4.4-5.3,2.5-5.3c-1.9,0-3.7,2.2-3.8,4.5c-3.1,1.8-7.9,1.8-11.7,3.6
+    c-3.7,1.8-6.8,5.3-8.2,7.7c-1.7-0.4-2.6-0.8-5.1-0.7c-5.4,0.1-6.1,4.9-6.1,4.9s-0.4,4,3.3,4.4c3.7,0.4,6.4-3.5,7.8-6.5
+    c3.3-0.4,4.2-1,4.2-1l0.1-0.9c0,0-1.5-0.1-2.8,0c1.4-3.2,4.2-5,7.2-6.7s7.4-1.6,11.1-3c-0.9,14.1,3,16.2,4.3,16.5
+    c1.3,0.4,3-1.9,4.2-4.3c8.2,1.8,6-16.3,4.1-19.2c9.8-11.1,11.8-10.7,15.1-11.8c3.5-1.1,7.2,2.3,7.8,7.5c0.7,5.1-4.4,6.9-5.8,6.9
+    s-1.8,0.2-2,0.7c-0.2,0.6-0.4,0.8,0.9,1.2c1.3,0.4,1,4.3-1,4.8c-2,0.5-2.6-4.3-2.6-4.3s4.6-6.7,4.3-12.1s-4.6-1.1-5.2,0.1
+    C82.1,18.5,83.3,30,83.3,30s-1.7,2.4-3.8,4.3s-3.3-0.7-3.3-2.1c5.3-2.6,4.5-4.9,4.4-5.9c-0.1-1-1.8-3-4.3,0.3
+    c-4,5-0.8,10.2,0.9,10.4c2.8,0.3,5.1-4.4,6.3-6.3c2.1,5.4,5.6,1.2,6,0.4c0.6-1.2,1.2-2.6,0.4-5c4.2-0.6,6.4-4.3,6.7-8
+    S94.3,8.9,89,8.8z M63,24.7c1.3,0.9-2.1,2.5-2.1,2.5S61.7,23.8,63,24.7z M33.1,45.8c-2,0.1-3-0.7-2.9-2.5c0.1-1.9,1.9-3.3,3.1-3.6
+    c1.2-0.4,5,1,5,1C37,44.1,35.1,45.7,33.1,45.8z M78.4,26.7c2.3,0,0.9,3.5-2.1,4C76.3,30.7,76.1,26.7,78.4,26.7z M85.7,14.4
+    c2.1-0.3,3,3.7-1.5,12.4C84.1,26.9,83.6,14.7,85.7,14.4z"/>
+    </mask>
+    
+    <mask id="masque5" fill="white">
+      <path d="M44.6,39.2c0,0,0.2,1.8,1.2,1.5c1-0.3,1.6-1.7,1.3-2.6S44.9,36.5,44.6,39.2z"/>
+    </mask>
+
+    <filter id="blur">
+      <feGaussianBlur stdDeviation=".5" />
+    </filter>
+
+  </defs>
+  
+  <g class="e" filter="url(#blur)">
+    <path class="P1" d="M17.1,48.7c0,0,0,18.4-0.8,24.1C15.4,78.4,13,91.1,8,90.8s-4.7-12-1.3-14.1s7,2.4,2.3,5.4" mask="url(#masque1)"/>
+      
+    <path class="P2" d="M13.2,62.3c0,0-1.4,5.1-3.4,4.7c-1.9-0.4-3.1-3.9,1.2-12.1c4.2-8.3,10.5-9.5,12.3-4.2
+      c1.9,5.2,3.4,24.9-15.6,22.9" mask="url(#masque2)"/>
+    
+    <g class="aris" mask="url(#masque3)">
+      <path id="a" class="st1" d="M31.3,52.6c0,0-3.9,1.3-4.3,6.9c-0.4,5.6,0.5,9.1,4.2-0.1c0.9-2.3,0.2-8.8,0.2-8.8"/>
+      <path id="r" class="st1" d="M32,50.8c0,0,0.8,13.6,2.8,11.6s3.2-9.7,2.1-13.2c-1.8-5.3-6.3,7.2,1.4-0.2c2.2-2.1,1.3-3,3.3-2.9
+      S40.1,57.5,42,56.7c1.8-0.8,4.1-7.3,3.8-15.1"/>
+      <path id="i" style="stroke-width: 3px;" class="st1" d="M46.4,41.7c0,0-0.4,14.4,2.1,11s2.6-12.4-0.1-15.9"/>
+      <path id="s" class="st1" d="M49.7,39.5c0,0,7.5,4.6,6.4,7.3c-1.1,2.8-5.6,5.7-4.4,1.1s6-4.2,6-8.9"/>
+    </g>
+    
+    <path class="point" mask="url(#masque5)" d="M45.4,37.4c0,0-1.6,3.2,0.1,3.1c2.4-0.1-0.4-4.7-0.4-4.7"/>
+    
+    <g class="web" mask="url(#masque4)">
+      <path id="W" class="st1" d="M43.8,40c0,0-8.5-1.4-10.9-0.8s-4.3,3.4-3.5,5.1s3.1,3.8,6.5,0.6c3.4-3.2,5.8-10.4,10.1-12.4
+        c4.3-2,10.9-2.5,14.3-4.2c3.4-1.7,5.3-2.7,4.5-3.4c-3.8-3.3-5.9-0.8-4.9,9.6c1,10.4,5,14.3,7.7,6.2c2.6-8.1-1.1-13.5-1.1-13.5
+        S63.9,41,68.7,41.5c4.9,0.5,3.7-16,2.1-18.4c-4.1-6-5.7,4.4,0.3-0.2c5.9-4.6,14.1-15,18.8-13.2c4.6,1.8,10.4,9.8,1.1,15.6"/>
+      <path id="e" class="st1" d="M76.1,31.9c0,0,4.9-1.4,4-5s-6.5,1.3-5.4,5.6c1.5,5.7,2.6,3.7,8.5-1.4"/>
+      <path id="b" style="stroke-width: 3px;" class="st1" d="M84.9,25.4c2.4-0.5,5.9-10.1,2.5-11.3s-3.1-0.2-3.6,1.7s-0.5,13.6,0.3,14.9s3.3,2.7,4.7,0.5
+        s0-5.3-1-6c0,0,2.4,1.2,4.1-0.2"/>
+    </g>
+  </g>
+
+  <g class="e" transform="translate(0,-2)">
+    <path class="P1" d="M17.1,48.7c0,0,0,18.4-0.8,24.1C15.4,78.4,13,91.1,8,90.8s-4.7-12-1.3-14.1s7,2.4,2.3,5.4" mask="url(#masque1)"/>
+      
+    <path class="P2" d="M13.2,62.3c0,0-1.4,5.1-3.4,4.7c-1.9-0.4-3.1-3.9,1.2-12.1c4.2-8.3,10.5-9.5,12.3-4.2
+      c1.9,5.2,3.4,24.9-15.6,22.9" mask="url(#masque2)"/>
+    
+    <g class="aris" mask="url(#masque3)">
+      <path id="a" class="st1" d="M31.3,52.6c0,0-3.9,1.3-4.3,6.9c-0.4,5.6,0.5,9.1,4.2-0.1c0.9-2.3,0.2-8.8,0.2-8.8"/>
+      <path id="r" class="st1" d="M32,50.8c0,0,0.8,13.6,2.8,11.6s3.2-9.7,2.1-13.2c-1.8-5.3-6.3,7.2,1.4-0.2c2.2-2.1,1.3-3,3.3-2.9
+      S40.1,57.5,42,56.7c1.8-0.8,4.1-7.3,3.8-15.1"/>
+      <path id="i" style="stroke-width: 3px;" class="st1" d="M46.4,41.7c0,0-0.4,14.4,2.1,11s2.6-12.4-0.1-15.9"/>
+      <path id="s" class="st1" d="M49.7,39.5c0,0,7.5,4.6,6.4,7.3c-1.1,2.8-5.6,5.7-4.4,1.1s6-4.2,6-8.9"/>
+    </g>
+    
+    <path class="point" mask="url(#masque5)" d="M45.4,37.4c0,0-1.6,3.2,0.1,3.1c2.4-0.1-0.4-4.7-0.4-4.7"/>
+    
+    <g class="web" mask="url(#masque4)">
+      <path id="W" class="st1" d="M43.8,40c0,0-8.5-1.4-10.9-0.8s-4.3,3.4-3.5,5.1s3.1,3.8,6.5,0.6c3.4-3.2,5.8-10.4,10.1-12.4
+        c4.3-2,10.9-2.5,14.3-4.2c3.4-1.7,5.3-2.7,4.5-3.4c-3.8-3.3-5.9-0.8-4.9,9.6c1,10.4,5,14.3,7.7,6.2c2.6-8.1-1.1-13.5-1.1-13.5
+        S63.9,41,68.7,41.5c4.9,0.5,3.7-16,2.1-18.4c-4.1-6-5.7,4.4,0.3-0.2c5.9-4.6,14.1-15,18.8-13.2c4.6,1.8,10.4,9.8,1.1,15.6"/>
+      <path id="e" class="st1" d="M76.1,31.9c0,0,4.9-1.4,4-5s-6.5,1.3-5.4,5.6c1.5,5.7,2.6,3.7,8.5-1.4"/>
+      <path id="b" style="stroke-width: 3px;" class="st1" d="M84.9,25.4c2.4-0.5,5.9-10.1,2.5-11.3s-3.1-0.2-3.6,1.7s-0.5,13.6,0.3,14.9s3.3,2.7,4.7,0.5
+        s0-5.3-1-6c0,0,2.4,1.2,4.1-0.2"/>
+    </g>
+  </g>
+
+
+</svg>
+
+<script src="tweenlite.js"></script>
+
+<script>
+        // Store a reference to our paths, excluding our clip path
+        var paths = document.querySelectorAll('.e path');
+        var svg = document.querySelector('svg');
+
+        // For each path, set the stroke-dasharray and stroke-dashoffset
+        // equal to the path's total length, hence rendering it invisible
+        var delay = 0;
+        var delayPoint = .4;
+        for (var i = 0; i < paths.length; i++) {
+          var e = paths[i];
+          e.style.strokeDasharray = e.style.strokeDashoffset = e.getTotalLength() + 1;
+          e._duration = e.getTotalLength() / 100;
+          console.log('durée', e._duration);
+          e._delay = delay;
+          console.log('__délai', e._delay);
+          delay += e._duration - .1;
+        };
+
+        var tl = new TimelineMax();
+
+        // 0: P1, 1: P2
+        // 2: a, 3: ari, 4: is, 5: s
+        // 6: .
+        // 7: W, 8: e, 9: b
+        tl.add([
+            TweenLite.to([paths[0], paths[10]], paths[0]._duration, {strokeDashoffset: 0, delay: paths[0]._delay}),
+            TweenLite.to([paths[1], paths[11]], paths[1]._duration, {strokeDashoffset: 0, delay: paths[1]._delay}),
+            TweenLite.to([paths[2], paths[12]], paths[2]._duration, {strokeDashoffset: 0, delay: paths[2]._delay}),
+            TweenLite.to([paths[3], paths[13]], paths[3]._duration, {strokeDashoffset: 0, delay: paths[3]._delay}),
+            TweenLite.to([paths[4], paths[14]], paths[4]._duration, {strokeDashoffset: 0, delay: paths[4]._delay}),
+            TweenLite.to([paths[5], paths[15]], paths[5]._duration, {strokeDashoffset: 0, delay: paths[5]._delay}),
+            TweenLite.to([paths[6], paths[16]], paths[6]._duration * 3, {strokeDashoffset: 0, delay: paths[6]._delay}),
+            TweenLite.to([paths[7], paths[17]], paths[7]._duration, {strokeDashoffset: 0, delay: paths[7]._delay + delayPoint}),
+            TweenLite.to([paths[8], paths[18]], paths[8]._duration, {strokeDashoffset: 0, delay: paths[8]._delay + delayPoint}),
+            TweenLite.to([paths[9], paths[19]], paths[9]._duration, {strokeDashoffset: 0, delay: paths[9]._delay + delayPoint})
+        ]);
+
+</script>
+
+</body>
+</html>

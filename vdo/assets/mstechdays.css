@@ -1,0 +1,158 @@
+@font-face {
+    font-family: 'segoe_uilight';
+    src: url('fonts/segoeuil-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.reveal,
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4 {
+	font-family: 'Segoe UI Light', 'segoe_uilight', sans-serif;
+}
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4 {
+	font-weight: bold;
+}
+.reveal table {
+	table-layout: fixed;
+	width: 100%;
+	border: 2px solid black;
+	margin-bottom: 200px;
+	border-collapse: collapse;
+}
+.reveal table th {
+	text-align: center;
+	background: #B8EFF6;
+}
+.reveal td {
+	padding: .5em 0;
+	border: 1px solid rgba(0,0,0,.1);
+}
+.reveal tr th:last-child,
+.reveal tr td:last-child {
+	width: 35%;
+}
+/***********************************
+	Specific mstechdays
+*/
+.part .state-background{
+	background: deepskyblue;
+	background-size: 100%;
+}
+.part h1 {
+	color: #FFF;
+}
+.questions .state-background {
+	background: tomato;
+	background-size: 100%;
+}
+.jdcjdr .state-background {
+	background: yellowgreen;
+	background-size: 100%;
+}
+@media (min-width: 50em) {
+	html.jdcjdr::after{
+		content: "Je dis ça, je dis rien!";
+		position: absolute; z-index: 50;
+		top: 0; left: 0;
+		font: bold 1.6em sans-serif;
+		white-space: nowrap;
+		padding: 1em 5em;
+		background: linear-gradient(orangered, red);
+		-webkit-transform: rotate(-45deg) translate(-256px,111px);
+		-webkit-transform-origin: 0 0;
+		transform: rotate(-45deg) translate(-256px,111px);
+		transform-origin: 0 0;
+		text-shadow: -1px 3px 2px rgba(0,0,0,.4);
+		box-shadow: 0 2px 5px rgba(0,0,0,.5);
+		color: #fff;
+		border-top: 1px solid rgba(255,255,255,1);
+		border-bottom: 1px solid rgba(0,0,0,.5);
+	}
+}
+.filtres2 .state-background {
+	border-top: 10px solid tomato;
+}
+.me{
+	background: url('imgs/sites.png') bottom right no-repeat;
+}
+.reveal .questions{
+	font-size: 1.8em;
+}
+.reveal .questions--jdcjdr{
+	font-size: 1.2em;
+}
+.reveal .questions p{
+	margin: 1em 0;
+}
+.reveal .questions-faux{
+	color: orangered;
+	background: #fff;
+}
+.reveal .questions-vrai{
+	color: yellowgreen;
+	background: #fff;
+}
+.reveal .questions span{
+	color: #fff;
+}
+.reveal .questions span code{
+	color: #333;
+}
+
+.vdoMenu ul li.jdcjdr a{
+color: yellowgreen;
+}
+.vdoMenu ul li.masques a,
+.vdoMenu ul li.masques2 a{
+color: deeppink;
+}
+.vdoMenu ul li.part a{
+color: deepskyblue;
+}
+.vdoMenu ul li.questions a{
+color: tomato;
+}
+
+#mstechdays {
+	position: fixed; z-index: 30;
+	bottom: 0; right: 0; left: 0;
+	background: #222;
+	color: #FFF;
+	box-shadow: 0 -2px 5px rgba(0,0,0,.5);
+}
+#mstechdays p {
+	margin: 0; padding: 0 1em;
+	font-size: .8em;
+}
+#mstechdays p:first-child {
+	line-height: 2.4;
+}
+.reveal .controls {
+	bottom: 100px;
+}
+@media (max-width: 50em) {
+	#mstechdays {
+		display: none;		
+	}
+	.reveal .controls {
+		bottom: 10px;
+	}
+}
+
+.reveal .u-left {
+	float: left;
+}
+.reveal .u-right {
+	float: right;
+}
+.reveal .u-alignleft {
+	text-align: left;
+}
+.reveal .u-alignright {
+	text-align: right;
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="light" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=400, initial-scale=1">
+	<title>Shader1</title>
+	<link rel="stylesheet" href="shader.css">
+</head>
+<body>
+	<div class="shader">
+		<div class="shader-back shader-back--social">
+			<div><a class="curl-social-share" href="#">share</a></div>
+			<div><a class="curl-social-share" href="#">cloud</a></div>
+			<div><a class="curl-social-share" href="#">attach</a></div>
+		</div>
+		<div class="shader-effect shader-effect--curl">
+			<img src="image.jpg" width="400" height="400">
+		</div>
+	</div>
+	<div class="shader">
+		<div class="shader-back shader-back--social">
+			<div><a class="curl-social-share" href="#">share</a></div>
+			<div><a class="curl-social-share" href="#">cloud</a></div>
+			<div><a class="curl-social-share" href="#">attach</a></div>
+		</div>
+		<div class="shader-effect shader-effect--curl">
+			<blockquote class="twitter-tweet" lang="fr"><p>[Blog] Les transformations 3D <a href="https://twitter.com/search/%23CSS">#CSS</a> avec IE10 <a href="http://t.co/b1d6fEKZN2" title="http://blog.iamvdo.me/post/48120687924/les-transformations-3d-css-avec-ie10">blog.iamvdo.me/post/481206879…</a></p>&mdash; Vincent De Oliveira (@iamvdo) <a href="https://twitter.com/iamvdo/status/324456173250162688">17 avril 2013</a></blockquote>
+			<script src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</div>
+	</div>
+	<script>
+	window.onload = function(){
+		var shader = document.querySelectorAll('.shader-effect');
+		for(var i = 0; i < shader.length; i++){
+			shader[i].addEventListener('click', function(){
+				this.classList.toggle('shader-effect--active');
+			});
+		}
+	}
+	</script>
+</body>
+</html>

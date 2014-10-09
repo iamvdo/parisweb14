@@ -1,0 +1,26 @@
+<!doctype html>
+<html class="light" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=400, initial-scale=1">
+	<title>Shader1</title>
+	<link rel="stylesheet" href="shader.css">
+</head>
+<body class="body--center">
+	<div class="shader">
+		<div class="shader-effect shader-effect--wave">
+			<img src="logo_html5.svg" width="400" height="400">
+		</div>
+	</div>
+	<script>
+	window.onload = function(){
+		var shader = document.querySelectorAll('.shader-effect');
+		for(var i = 0; i < shader.length; i++){
+			shader[i].addEventListener('click', function(){
+				this.classList.toggle('shader-effect--active');
+			});
+		}
+	}
+	</script>
+</body>
+</html>
