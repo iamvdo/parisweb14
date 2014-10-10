@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  html {
+    height: 100%;
+    background: radial-gradient(ellipse farthest-side at 100% 100%, #85D8CE 10%, #085078 120%);
+    background-size: cover;
+    background: #222;
+  }
+  img {
+    display: block;
+    margin: 100px auto;
+    -webkit-mask-size: 100% 100%;
+  }
+  [data-src="0"] {
+    -webkit-mask-image: url('masque1.png');
+  }
+  [data-src="1"] {
+    -webkit-mask-image: url('masque2.png');
+  }
+  [data-src="2"] {
+    -webkit-mask-image: url('masque3.png');
+  }
+  [data-src="3"] {
+    -webkit-mask-image: url('masque4.png');
+  }
+  </style>
+</head>
+<body>
+  <img data-src="0" src="../vdo/imgs/12-450.jpg" alt="">
+
+  <script>
+  var img = document.querySelector('img');
+  img.addEventListener('click', function () {
+    var val = (Number(this.getAttribute('data-src')) + 1) % 4;
+    console.log(val);
+    this.setAttribute('data-src',val );
+  });
+  </script>
+</body>
+</html>

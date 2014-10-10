@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  header {
+    height: 100%;
+    background: url('tour-eiffel.jpg') center;
+    background-size: cover;
+  }
+  h1 {
+    height: 100%;
+    line-height: 100%;
+    font: 10em montserrat, sans-serif;
+    letter-spacing: -10px;
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0 3px 3px rgba(0,0,0,.5);
+    -webkit-mask: url('tour-eiffel-mask-alpha.png') center;
+    -webkit-mask-size: cover;
+  }
+  h1 span {
+    display: block;
+    transform: translateY(70px);
+    animation: up 1s cubic-bezier(.1,.1,.1,1);
+  }
+  @keyframes up {
+    from {
+      transform: translateY(800px);
+      opacity: 0;
+    }
+    50% {
+      opacity: .5;
+    }
+    to {
+      transform: translateY(70px);
+      opacity: 1;
+    }
+  }
+  #range {
+    position: absolute;
+    z-index: 1;
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 50px;
+    padding: 25px;
+    height: 100%;
+  }
+  </style>
+</head>
+<body>
+  <input type="range" id="range" orient="vertical" min="70" max="800" value="800">
+  <header>
+    <h1><span>Paris&nbsp;Web&nbsp;</span></h1>
+  </header>
+  <script>
+  var range = document.getElementById('range');
+  var span = document.querySelector('h1 span');
+  range.addEventListener('input', function () {
+    var value = this.value;
+    value = 870 - value;
+    span.style.transform = 'translateY(' + value + 'px)';
+  })
+  </script>
+</body>
+</html>
