@@ -16,16 +16,23 @@ body {
   background: #eee;
   border: 1px solid #ddd;
 }
-img {  
-  animation: fill 3s infinite cubic-bezier(.1,.1,.1,1) both;
+.svg-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 }
-.image:nth-child(2) img {
+
+.anim {
+  animation: fill 3s 1 cubic-bezier(.1,.1,.1,1) both;
+}
+.image:nth-child(2) .anim {
   animation-delay: 1s;
 }
-.image:nth-child(3) img {
+.image:nth-child(3) .anim {
   animation-delay: .4s;
-  
 }
+/*
 .loader {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -34,8 +41,20 @@ img {
   height: 30px;
   border: 2px solid deepskyblue;
   border-radius: 50%;
+  clip-path: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><clipPath id="clipPath" clipPathUnits="objectBoundingBox"><polygon points="0.5 0 1 0 1 1 0 1 0.5 0.5"></polygon></clipPath></svg>#clipPath');
   -webkit-clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%, 50% 50%);
   animation: rotate 1s infinite linear;
+}
+*/
+.loader {
+  fill: none;
+  stroke: deepskyblue;
+  stroke-width: 2px;
+}
+
+button {
+  display: block;
+  margin: 100px auto;
 }
 @keyframes rotate {
   to { transform: rotate(360deg); }
@@ -47,17 +66,185 @@ img {
   </style>
 </head>
 <body>
+  <!--
   <div class="image">
     <div class="loader"></div>
-    <img src="../vdo/imgs/1.jpg" alt="">
+    <img class="anim" src="../vdo/imgs/1.jpg" alt="">
   </div>
   <div class="image">
     <div class="loader"></div>
-    <img src="../vdo/imgs/2.jpg" alt="">
+    <img class="anim" src="../vdo/imgs/2.jpg" alt="">
   </div>
   <div class="image">
     <div class="loader"></div>
-    <img src="../vdo/imgs/8.jpg" alt="">
+    <img class="anim" src="../vdo/imgs/8.jpg" alt="">
   </div>
+  <button>Reload</button>
+  -->
+  <script>
+  /*
+var b = document.querySelector('button');
+b.addEventListener('click', function () {
+  var imgs = document.querySelectorAll('img');
+  for (var i = 0; i < imgs.length; i++) {
+    var img = imgs[i];
+    img.className = '';
+    (function (img) {
+      setTimeout(function () {
+        img.className = 'anim';
+      }, 100);
+    })(img);
+  };
+});
+*/
+  </script>
+  <div class="image">
+    <svg class="svg-image">
+      <defs>
+        <clipPath id="clip">
+          <circle class="clip-circle" id="circle" cx="100" cy="100" r="5" />
+        </clipPath>
+        <clipPath id="polygon">
+          <polygon points="100,0 200,0 200,200 0,200 0,100 100,100" />
+        </clipPath>
+      </defs>
+      <circle clip-path="url(#polygon)" class="loader" cx="100" cy="100" r="15" />
+      <image clip-path="url(#clip)" x="0" y="0" width="200" height="200" xlink:href="../vdo/imgs/1.jpg" />
+    </svg>
+  </div>
+  <div class="image">
+    <svg class="svg-image">
+      <defs>
+        <clipPath id="clip2">
+          <circle class="clip-circle" id="circle2" cx="100" cy="100" r="5" />
+        </clipPath>
+        <clipPath id="polygon2">
+          <polygon points="100,0 200,0 200,200 0,200 0,100 100,100" />
+        </clipPath>
+      </defs>
+      <circle clip-path="url(#polygon2)" class="loader" cx="100" cy="100" r="15" />
+      <image clip-path="url(#clip2)" x="0" y="0" width="200" height="200" xlink:href="../vdo/imgs/2.jpg" />
+    </svg>
+  </div>
+  <div class="image">
+    <svg class="svg-image">
+      <defs>
+        <clipPath id="clip3">
+          <circle class="clip-circle" id="circle3" cx="100" cy="100" r="5" />
+        </clipPath>
+        <clipPath id="polygon3">
+          <polygon points="100,0 200,0 200,200 0,200 0,100 100,100" />
+        </clipPath>
+      </defs>
+      <circle clip-path="url(#polygon3)" class="loader" cx="100" cy="100" r="15" />
+      <image clip-path="url(#clip3)" x="0" y="0" width="200" height="200" xlink:href="../vdo/imgs/8.jpg" />
+    </svg>
+  </div>
+  <button>Reload</button>
+  
+  <script src="Snap.svg-0.3.0/dist/snap.svg-min.js"></script>
+  <script>
+  /*
+var tl = new TimelineMax();
+tl.add([
+  TweenLite.to(document.getElementById('circle'), 1.6, {transform: 'scale(40)'})
+]);
+*/
+
+var cubicBezier = function (x1, y1, x2, y2, epsilon) {
+
+  var curveX = function(t){
+    var v = 1 - t;
+    return 3 * v * v * t * x1 + 3 * v * t * t * x2 + t * t * t;
+  };
+
+  var curveY = function(t){
+    var v = 1 - t;
+    return 3 * v * v * t * y1 + 3 * v * t * t * y2 + t * t * t;
+  };
+
+  var derivativeCurveX = function(t){
+    var v = 1 - t;
+    return 3 * (2 * (t - 1) * t + v * v) * x1 + 3 * (- t * t * t + 2 * v * t) * x2;
+  };
+
+  return function (t) {
+
+    var x = t, t0, t1, t2, x2, d2, i;
+
+    // First try a few iterations of Newton's method -- normally very fast.
+    for (t2 = x, i = 0; i < 8; i++){
+      x2 = curveX(t2) - x;
+      if (Math.abs(x2) < epsilon) return curveY(t2);
+      d2 = derivativeCurveX(t2);
+      if (Math.abs(d2) < 1e-6) break;
+      t2 = t2 - x2 / d2;
+    }
+
+    t0 = 0, t1 = 1, t2 = x;
+
+    if (t2 < t0) return curveY(t0);
+    if (t2 > t1) return curveY(t1);
+
+    // Fallback to the bisection method for reliability.
+    while (t0 < t1){
+      x2 = curveX(t2);
+      if (Math.abs(x2 - x) < epsilon) return curveY(t2);
+      if (x > x2) t0 = t2;
+      else t1 = t2;
+      t2 = (t1 - t0) * .5 + t0;
+    }
+
+    // Failure
+    return curveY(t2);
+
+  };
+
+};
+
+var duration = 1000;
+var epsilon = (1000 / 60 / duration) / 4;
+var timingFunction = cubicBezier(.1,.1,.1,1, epsilon);
+
+var svgs = document.querySelectorAll('.svg-image');
+var delays = [0,1000,400];
+
+function animRotate (loader) {
+  loader.stop().animate(
+    {transform: 'r360,100,100'},
+    1000,
+    function () {
+      loader.attr({transform: 'rotate(0 100 100)'});
+      animRotate(loader);
+    }
+  )
+}
+
+function init (start) {
+  for (var i = 0; i < svgs.length; i++) {
+    var s = Snap(svgs[i]);
+    var circle = s.select('.clip-circle');
+    var loader = s.select('.loader');
+    animRotate(loader);
+    (function (circle, i) {
+      if (!start) {
+        circle.stop().animate({r: 5}, 0);
+      }
+      setTimeout(function () {
+        circle.stop().animate({r: 200}, duration, timingFunction);
+      }, 1500 + delays[i]);
+    })(circle, i);
+  };
+}
+
+init(true);
+
+var b = document.querySelector('button');
+b.addEventListener('click', function () {
+  init();
+});
+
+
+  </script>
 </body>
 </html>

@@ -9,8 +9,9 @@
  /*#f03d36;*/
 body {
   background: #444;
-  background: #FFF;
-  overflow-y: auto;
+  background: #f03d36;
+  background: linear-gradient(to bottom right, white -50%, #f03d36 20%, black 200%);
+  /* overflow-y: auto; */
   width: 100%;
   width: calc(100% + 20px);
 }
@@ -22,7 +23,7 @@ body {
   font-weight: normal;
   letter-spacing: -0.05em;
   color: white;
-  color: #444;
+  color: #fff;
 }
 .reveal-overlay {
   position: fixed;
@@ -61,10 +62,9 @@ body {
   letter-spacing: -0.05em;
   text-transform: none;
   text-shadow: none;
-  background: #111;
 }
 
-.reveal h1 { font-size: 2.8em; background: #f03d36; }
+.reveal h1 { font-size: 2.8em; }
 .reveal h2 { font-size: 1.8em;  }
 .reveal h3 { font-size: 1.1em; text-align: left; display: block; background: transparent; color: #111;}
 .reveal h4 { font-size: 1em;    }
@@ -149,8 +149,7 @@ body {
 .reveal h2 code {
   color: #FFF;
   font: bold .9em monospace;
-  background: rgba(0,0,0,.6);
-  background: #444;
+  background: #111;
   border-radius: 3px;
   padding: 0 .2em;
   /*white-space: nowrap;*/
@@ -240,8 +239,7 @@ body {
  *********************************************/
 .reveal a:not(.image) {
   color: #fff;
-  color: #444;
-  border-bottom: 1px solid #f03d36;
+  border-bottom: 1px solid #111;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -251,10 +249,9 @@ body {
 
 .reveal a:not(.image):hover {
   color: #fff;
-  color: #444;
+  color: #111;
   /* border: none; */
   border-bottom-color: #fff;
-  border-bottom-color: #f03d36;
   text-shadow: none;
 }
 
