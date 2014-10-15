@@ -41,6 +41,14 @@ body {
   z-index: 100;
   bottom: 0; left: 0; right: 0;
 }
+.info-overlay a {
+  color: inherit;
+  text-decoration: none;
+}
+.info-overlay a:hover,
+.info-overlay a:focus {
+  text-decoration: underline;
+}
 #info-slides {
   left: 150px;
 }
