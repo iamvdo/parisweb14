@@ -32,6 +32,18 @@ body {
   border: 10px solid #f03d36;
   pointer-events: none;
 }
+.info-overlay {
+  font: 1.2em sans-serif;
+  color: #FFF;
+  background: #111;
+  padding: .5em 1em;
+  position: fixed;
+  z-index: 100;
+  bottom: 0; left: 0; right: 0;
+}
+#info-slides {
+  left: 150px;
+}
 .reveal .slides > section {
     height: 100%;
 }
@@ -305,20 +317,29 @@ body {
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
+.reveal .controls {
+  height: 30px;
+  bottom: 0;
+  z-index: 101;
+}
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: #f03d36; }
+  top: 0;
+  border-right-color: #FFF; }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: #f03d36; }
+  top: 0;
+  border-left-color: #FFF; }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
+  display: none;
   border-bottom-color: #f03d36; }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
+  display: none;
   border-top-color: #f03d36; }
 
 .reveal .controls div.navigate-left.enabled:hover {
