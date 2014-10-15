@@ -112,7 +112,8 @@ body {
   box-shadow: none;
   background: transparent;
 }
-.reveal .u-margin-auto {
+.reveal .u-margin-auto,
+.reveal .u-margin-auto:hover {
   margin: auto;
 }
 .reveal .u-svg {
