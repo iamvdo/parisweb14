@@ -904,7 +904,7 @@ img:hover{
           <svg>
             <mask id="mask-surbrillance" style="mask-type: alpha">
               <image width="421" height="250" xlink:href="vdo/imgs/logo-pw.png">
-              </image> 
+              </image>
             </mask>
           </svg>
         </section>
@@ -1648,6 +1648,12 @@ img:hover{
         //parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
         //parallaxBackgroundSize: '2100px 900px',
 
+        multiplex: {
+          secret: null,
+          id: '43d9c145851bae93',
+          url: 'revealjs.jit.su:80'
+        },
+
         // Optional libraries used to extend on reveal.js
         dependencies: [
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
@@ -1658,7 +1664,9 @@ img:hover{
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: 'plugin/prefixfree/prefixfree.js', async: true },
           { src: 'plugin/live-coding/live-coding.js', async: true, condition: function() { return !!document.body.classList; }},
-          { src: 'plugin/nav/nav.js', async: true}
+          { src: 'plugin/nav/nav.js', async: true},
+          { src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
+          { src: 'plugin/multiplex/client.js', async: true }
         ]
       });
 
