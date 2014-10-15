@@ -86,6 +86,9 @@ body {
   background: transparent;
   color: #111;
 }
+.reveal button {
+  letter-spacing: normal;
+}
 
 .reveal .u-aligncenter {
   text-align: center;
