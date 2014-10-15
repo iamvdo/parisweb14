@@ -11,7 +11,7 @@ body {
   background: #444;
   background: #f03d36;
   background: linear-gradient(to bottom right, white -50%, #f03d36 20%, black 200%);
-  /* overflow-y: auto; */
+   overflow-y: auto; 
   width: 100%;
   width: calc(100% + 20px);
 }
@@ -91,12 +91,26 @@ body {
 .reveal .u-margin {
   margin: 6em 0;
 }
-.reveal .u-no {
+.reveal .u-no,
+.reveal .u-no:hover {
   margin: 0;
   max-width: inherit;
   max-height: inherit;
   border: none;
   box-shadow: none;
+  background: transparent;
+}
+.reveal .u-margin-auto {
+  margin: auto;
+}
+.reveal .u-svg {
+  height: 0;
+  position: absolute;
+}
+.reveal .info {
+  font-size: .6em;
+  font-style: italic;
+  color: #111;
 }
 /*********************************************
  * CONTENT
@@ -138,11 +152,11 @@ body {
   position: relative;
   z-index: 1;
   overflow: scroll;
-  /*height: 110px;*/
   transition: z-index 0s .5s;
 }
-.reveal pre.large {
-  height: auto;
+.reveal pre.small {
+  height: 110px;
+  overflow: visible;
 }
 .reveal ul code,
 .reveal p code,
@@ -159,8 +173,6 @@ body {
   position: relative;
   max-height: inherit;
   height: auto;
-  /*max-height: 100px;
-  height: 100px;*/
   font-family: Consolas, Monaco, monospace;
   font-weight: bold;
   font-size: 1.7em;
@@ -172,24 +184,22 @@ body {
        tab-size: 3;
   transition: max-height .5s, height .5s;
 }
-.reveal pre.large code {
-  max-height: inherit;
-  height: auto;
+.reveal pre.small code {
+  max-height: 100px;
+  height: 100px;
+  white-space: pre-wrap;
 }
-.reveal pre:hover {
+.reveal pre.small:hover {
   z-index: 10;
   transition: z-index 0s 0s;
 }
-.reveal pre:first-of-type:hover {
+.reveal pre.small:first-of-type:hover {
   z-index: 20;
 }
-/*
-.reveal pre:hover code,
-.reveal code:focus {
+.reveal pre.small:hover code {
   max-height: 400px;
   height: 400px;
 }
-*/
 .reveal table {
   width: 100%;
   margin: 1em 0;
